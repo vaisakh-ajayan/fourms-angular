@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 text-center mx-auto mb-5">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li 
+                    class="page-item {{
+                        questionResponse.current_page==1?'disabled':''
+                    }}">
+                        <a class="page-link"
+                        (click)="pageChangeHandler(questionResponse.current_page-1)">Previous</a>
+                    </li>
+                    <li
+                    *ngFor="let item generateArray(questionResponse.last_page)"
+                    class="page-item {{
+                        questionResponse.current_page == item+1 ? 'active' : ''
+                    }}">
+                        <a class="page-link"
+                        (click)="pageChangeHandler(item+1)">
+                            {{item+1}}
+                        </a>
+                    </li>
+                    <li
+                    class="page-item {{
+                        questionResponse.current_page==questionResponse.last_page?'disabled':''
+                    }}">
+                        <a class="page-link"
+                        (click)="pageChangeHandler(questionResponse.current_page+1)">
+                        Next
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

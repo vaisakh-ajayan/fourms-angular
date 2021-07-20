@@ -20,7 +20,7 @@ export class DataService {
   }
 
   //search questions using keywords
-  searchQuesttions(keyword: string){
+  searchQuestions(keyword: string){
     return this.http.get('http://forum.mashuptest.com/api/question/search?keyword='+keyword)
     .pipe(
       map((response: {result: QuestionResponse})=>{

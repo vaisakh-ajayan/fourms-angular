@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h3 class="text-center mb-3">{{isLoginMode?"Login":"Signup"}}</h3>
+            <div *ngIf="signUpMessage" class="alert alert-success">{{signUpMessage}}</div>
+
+            <form #authForm="ngForm" (ngSubmit)="submitAuthForm(authForm.value)">
+                <div *ngIf="!isLoginMode" class="form-group">
+                    <label for="name">Name</label>
+                    <input 
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    ngModel
+                    required
+                    #name="ngModel"
+                    >
+                    <span
+                    *ngIf="name.invalid&&name.touched&&!errorMessage"
+                    class="text-danger help-block">
+                    The name field is required
+                    </span>
+                    <span
+                    *ngIf="errorMessage&&
+                    errorMessage.name!=undefined&&
+                    errorMessage.name.length>0" class="text-danger help-block">
+                    {{errorMessage.name[0]}}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    ngModel
+                    required
+                    #email="ngModel"
+                    >
+                    <span
+                    *ngIf="email.invalid&&email.touched&&!errorMessage"
+                    class="text-danger help-block">
+                    Enter valid email
+                    </span>
+                    <span
+                    *ngIf="errorMessage&&
+                    errorMessage.email!=undefined&&
+                    errorMessage.email.length>0"
+                    class="text-danger help-block">
+                    {{errorMessage.email[0]}}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    ngModel
+                    required
+                    #password="ngModel"
+                    >
+                    <span
+                    *ngIf="password.invalid&&password.touched&&!errorMessage"
+                    class="text-danger help-block">
+                    Password is required
+                    </span>
+                    <span
+                    *ngIf="errorMessage&&
+                    errorMessage.password!=undefined&&
+                    errorMessage.password.length>0"
+                    class="text-danger help-block">
+                    {{errorMessage.password[0]}}
+                    </span>
+                </div>
+
+                <div *ngIf="!isLoginMode" class="form-group">
+                    <label for="cnfpassword">Confirm Password</label>
+                    <input 
+                    type="password"
+                    id="cnfpassword"
+                    name="cnfpassword"
+                    class="form-control"
+                    ngModel
+                    required
+                    #cnfpassword="ngModel"
+                    >
+                    <span
+                    *ngIf="cnfpassword.invalid&&cnfpassword.touched&&!errorMessage"
+                    class="text-danger help-block">
+                    Password confirmation is required
+                    </span>
+                    <span
+                    *ngIf="errorMessage&&
+                    errormessage.cnfpassword!=undefined&&
+                    errorMessage.cnfpassword.length>0" 
+                    class="Password confirmation is required">  <!--len>0, pass[1]-->
+                    {{errorMessage.cnfpassword[0]}}
+                    </span>
+                </div>
+                <div>
+                    <button [disabled]="false" class="btn btn-primary" type="submit">
+                        {{isLoginMode?"Login":"Signup"}}
+                    </button>
+                </div>
+            </form>
+            <button class="btn btn-secondary mt-2" (click)="onSwitchMode()">
+                switch to {{isLoginMode?"signup":"login"}}
+            </button>
+        </div>
+    </div>
+</div>
