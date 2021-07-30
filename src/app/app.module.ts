@@ -11,6 +11,10 @@ import { AuthComponent } from './auth/auth.component';
 import { AskquestionComponent } from './askquestion/askquestion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditanswerComponent } from './editanswer/editanswer.component';
+import { EditquestionComponent } from './editquestion/editquestion.component';
+import { MyanswersComponent } from './myanswers/myanswers.component';
+import { MyquestionsComponent } from './myquestions/myquestions.component';
+import { ShowquestionComponent } from './showquestion/showquestion.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { EditanswerComponent } from './editanswer/editanswer.component';
     HomeComponent,
     AuthComponent,
     AskquestionComponent,
-    EditanswerComponent
+    EditanswerComponent,
+    EditquestionComponent,
+    MyanswersComponent,
+    MyquestionsComponent,
+    ShowquestionComponent
   ],
   imports: [
     BrowserModule,

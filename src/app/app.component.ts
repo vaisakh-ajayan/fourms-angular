@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'forum-app';
+  
+  private userSub: Subscription;
+  isLoggedIn=null;
+  constructor(private authService: AuthService){}
+
+  ngOnInit(): void{
+    this.authService.autoLogin();
+    this.userSub = this.authService.user.subscribe((user)=>{
+      if (user===null) {
+        this.isLoggedIn=false;
+      }
+      else{
+        this.isLoggedIn=true;
+      }
+    })
+  }
+
+  ngOnDestroy(){
+    this.userSub.unsubscribe();
+  }
+
+  onLogout(){
+    this.authService.logout()
+  }
 }

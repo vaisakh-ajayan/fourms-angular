@@ -1,0 +1,4 @@
+<!--This component will list all the questions which are answered by the currently logged in user.-->
+<div *ngFor="let question of listQuestions">
+    <app-listitem [questionItem]="question"></app-listitem>
+</div>
